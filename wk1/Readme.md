@@ -1,7 +1,7 @@
 ### Week 1
 
 -   Summary
-    -   [Git Note](file:///C:/Users/U430/Documents/R/Git_Note.html)
+    -   [Git Note](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk1/Notes/Git_Note.md)
     -   Quick R Note
 -   Assignment
     1.  Course
