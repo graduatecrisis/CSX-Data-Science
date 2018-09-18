@@ -10,4 +10,4 @@
         -   practice3.R
     2.  HW
         -   R.basic.R
-        -   R.guessing.number.R
+        -   [R.guessing.number.R](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk1/Notes/hw1_guessing_number_note.md)
