@@ -19,7 +19,7 @@ Hi This is Jill. Currently doing my fifth year in NTU. Major in Business Adminis
     -   Finish [course practice & hw1](https://github.com/graduatecrisis/CSX-Data-Science/tree/master/wk1)
     -   Finish DataCamp: RMarkdown
 -   wk1 Note
-    -   Git Note
+    -   [Git Note](file:///C:/Users/U430/Documents/R/Git_Note.html)
     -   Quick R Note
 
 ------------------------------------------------------------------------
