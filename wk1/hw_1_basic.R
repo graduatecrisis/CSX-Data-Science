@@ -56,7 +56,7 @@ for(i in 1:10) {
   i = i + 1
 }
 
-## Potential error when num[i] == 66: missing value where TRUE/FALSE needed
+## Potential error when nums[i] == 66: missing value where TRUE/FALSE needed
 
 
 
