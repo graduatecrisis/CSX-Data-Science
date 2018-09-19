@@ -10,7 +10,7 @@ library(stringr)
 
 guessing_number = function() {
   Com = as.character(0:9)
-  Ans = sample(Com, size = 4)
+  Ans = sample(Com, size = 4, replace = FALSE)
   count = 0
   print("Please enter non_replicate 4 digit number from 0 to 9")
   repeat {
