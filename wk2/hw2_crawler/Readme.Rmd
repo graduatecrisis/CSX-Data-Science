@@ -1,15 +1,16 @@
 ---
-title: 'R Web Crawler Example: Airbnb'
-author: "Graduatecrisis"
-date: "2018年9月25日"
-output: 
-  html_document:
-    toc: true
+title: R Web Crawler Example -- Airbnb
+author: Graduatecrisis
+output: html_document
+   
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
+## R Web Crawler Example -- Airbnb
 
 ## 資料內容主軸
 利用Airbnb查詢Montreal, Canada的住宿資料，並將需要的資訊製作成dataframe。
