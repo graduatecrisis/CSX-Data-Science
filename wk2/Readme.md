@@ -7,7 +7,7 @@
     1.  Course
         -   practice1.R
         -   practice2.R
-        -   crawler\_practice.R
+        -   practice3_crawler_rvest: Steam Example
     2.  HW
-        -   Web Crawler
+        -   Web Crawler: Airbnb Example
         -   [R Tic Tac Toe](https://hackmd.io/s/Ski000wK7)
