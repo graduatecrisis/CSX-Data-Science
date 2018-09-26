@@ -31,6 +31,6 @@ Hi This is Jill. Currently doing my fifth year in NTU. Major in Business Adminis
     - Setting up Github Page
 -   At Home
     - Finish [course practice & hw2](https://github.com/graduatecrisis/CSX-Data-Science/tree/master/wk2)
-    - Finish DataCamp
+    - Finish DataCamp: Working with Web Data in R
 -   wk2 Note
-    - Rvest vs. Httr
+    - [R Web Crawling Note](https://hackmd.io/MhrLLA_KT_S3IWxusi2MxQ)
