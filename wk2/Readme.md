@@ -1,7 +1,7 @@
 ### Week 2
 
 -   Summary
-    -   [Rvest Note](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk1/Notes/Git_Note.md)
+    -   Rvest Note
     -   Quick R Note
 -   Assignment
     1.  Course
@@ -10,4 +10,4 @@
         -   crawler\_practice.R
     2.  HW
         -   Web Crawler
-        -   R Tic Tac Toe
+        -   [R Tic Tac Toe](https://hackmd.io/s/Ski000wK7)
