@@ -1,7 +1,7 @@
 ### Week 2
 
 -   Summary
-    -   Rvest Note
+    -   Rvest vs. Httr Note
     -   Quick R Note
 -   Assignment
     1.  Course
