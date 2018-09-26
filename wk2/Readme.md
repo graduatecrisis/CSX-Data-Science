@@ -1,8 +1,7 @@
 ### Week 2
 
 -   Summary
-    -   Rvest vs. Httr Note(Still Working)
-    -   Quick R Note
+    -   [R Web Crawling Note](https://hackmd.io/MhrLLA_KT_S3IWxusi2MxQ)
 -   Assignment
     1.  Course
         -   practice1.R
