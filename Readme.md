@@ -20,8 +20,17 @@ Hi This is Jill. Currently doing my fifth year in NTU. Major in Business Adminis
     -   Finish DataCamp: RMarkdown
 -   wk1 Note
     -   [Git Note](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk1/Notes/Git_Note.md)
-    -   Quick R Note
 
 ------------------------------------------------------------------------
 
 *week\_2*
+
+-   In Class
+    - Understand the basic knowledge of Web Crawling
+    - Practice with rvest package
+    - Setting up Github Page
+-   At Home
+    - Finish [course practice & hw2](https://github.com/graduatecrisis/CSX-Data-Science/tree/master/wk2)
+    - Finish DataCamp
+-   wk2 Note
+    - Rvest vs. Httr
