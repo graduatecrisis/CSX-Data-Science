@@ -46,6 +46,6 @@ Hi This is Jill. Currently doing my fifth year in NTU. Major in Business Adminis
     - Prepare data file for hw
 -   At Home
     - Finish [course practice & hw3](https://github.com/graduatecrisis/CSX-Data-Science/tree/master/wk3)
-    - Finish DataCamp: Working with Web Data in R
+    - Find New package on plotting map: OpenStreetMap package
 -   wk3 Note
     - ggplot2 Note
