@@ -1,12 +1,9 @@
----
-title: CSX wk3 readme
----
-
 ### Week 3
 
 * Summary
     + ggplot2 Note
     + Resources:
+        + [ggplot2 Official](https://ggplot2.tidyverse.org/index.html)
         + [R CookBook Graphic](http://www.cookbook-r.com/Graphs/)
         + [ggplot2 Tutorial](http://r-statistics.co/ggplot2-Tutorial-With-R.html)
         + [Top 50 ggplot Examples](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)

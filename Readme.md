@@ -34,3 +34,18 @@ Hi This is Jill. Currently doing my fifth year in NTU. Major in Business Adminis
     - Finish DataCamp: Working with Web Data in R
 -   wk2 Note
     - [R Web Crawling Note](https://hackmd.io/MhrLLA_KT_S3IWxusi2MxQ)
+
+
+------------------------------------------------------------------------
+
+*week\_3*
+
+-   In Class
+    - Understand the basic knowledge of Data Visualization
+    - Practice with ggplot2 package
+    - Prepare data file for hw
+-   At Home
+    - Finish [course practice & hw3](https://github.com/graduatecrisis/CSX-Data-Science/tree/master/wk3)
+    - Find New package on plotting map: OpenStreetMap package
+-   wk3 Note
+    - ggplot2 Note
