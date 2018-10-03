@@ -16,7 +16,7 @@
 * Assignment -- Data Visualiztion
     * Example: Montreal Airbnb Listings
     Demonstrate `ggplot2` practice using Web crawling file ``"Montreal_Airbnb.csv"`` from last week
-        * HTML
-        * GitHub Page
-        * R code
+        * [HTML](https://graduatecrisis.github.io/CSX-Data-Science/wk3/hw3_ggplot/airbnb_ggplot.html)
+        * [GitHub Page](https://graduatecrisis.github.io/CSX-Data-Science/wk3/hw3_ggplot/)
+        * [R code](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk3/hw3_ggplot/airbnb_ggplot.R)
     
