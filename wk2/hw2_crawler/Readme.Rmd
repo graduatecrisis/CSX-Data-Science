@@ -1,8 +1,7 @@
 ---
-title: R Web Crawler Example -- Airbnb
-author: Graduatecrisis
-output: html_document
-   
+output: 
+  md_document:
+    variant: "markdown_github"
 ---
 
 ```{r setup, include=FALSE}
