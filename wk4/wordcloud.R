@@ -7,10 +7,11 @@ library("SnowballC")
 library("wordcloud")
 library("RColorBrewer")
 library("readtext")
-
+getwd()
 txt = readtext("./wk4/stevejobs_speech.txt", encoding = "UTF-8")
 rm(docs)
 
+doc = txt$text
 doc1 = Corpus(VectorSource(doc))
 inspect(doc1)
 
@@ -42,8 +43,9 @@ doc2 = tm_map(doc2, removeWords, c("even", "because", "being", "before", "going"
 doc2 = tm_map(doc2, removeWords, c("found", "let", "his", "will"))
 doc2 = tm_map(doc2, removeWords, c("today", "make", "dots", "back", "closest"))
 doc2 = tm_map(doc2, removeWords, c("first", "how", "our", "put", "who", "final"))
+doc2 = tm_map(doc2, removeWords, c("<e2>", "a", "it", "of", "my", "is", "so" ))
 
-dtm = TermDocumentMatrix(doc2)
+dtm = TermDocumentMatrix(doc2, control=list(wordLengths=c(1,Inf)))
 m = as.matrix(dtm)
 v = sort(rowSums(m),decreasing=TRUE)
 d = data.frame(word = names(v),freq=v)

@@ -42,43 +42,43 @@
     doc2 = tm_map(doc2, removeWords, c("today", "make", "dots", "back", "closest"))
     doc2 = tm_map(doc2, removeWords, c("first", "how", "our", "put", "who", "final"))
 
-    dtm = TermDocumentMatrix(doc2)
+    dtm = TermDocumentMatrix(doc2, control=list(wordLengths=c(1,Inf)))
     m = as.matrix(dtm)
     v = sort(rowSums(m),decreasing=TRUE)
     d = data.frame(word = names(v),freq=v)
     head(d, 30)
 
     ##                    word freq
+    ## i                     i   85
+    ## it                   it   53
+    ## a                     a   46
+    ## of                   of   41
+    ## my                   my   30
+    ## is                   is   28
+    ## me                   me   18
+    ## so                   so   17
     ## all                 all   16
     ## life               life   16
+    ## as                   as   15
+    ## on                   on   15
     ## <e2>\u0080 <e2>\u0080   15
+    ## be                   be   14
     ## college         college   14
+    ## at                   at   11
+    ## do                   do   11
+    ## we                   we    9
     ## apple             apple    8
+    ## no                   no    8
     ## dropped         dropped    7
     ## looking         looking    7
+    ## an                   an    6
+    ## by                   by    6
     ## death             death    6
     ## everything   everything    6
     ## great             great    6
+    ## if                   if    6
     ## best               best    5
     ## company         company    5
-    ## decided         decided    5
-    ## love               love    5
-    ## started         started    5
-    ## stay               stay    5
-    ## way                 way    5
-    ## work               work    5
-    ## computer       computer    4
-    ## connect         connect    4
-    ## die                 die    4
-    ## find               find    4
-    ## fired             fired    4
-    ## heart             heart    4
-    ## loved             loved    4
-    ## made               made    4
-    ## turned           turned    4
-    ## away               away    3
-    ## become           become    3
-    ## calligraphy calligraphy    3
 
     set.seed(1234)
     wordcloud(words = d$word, freq = d$freq, min.freq = 1,
