@@ -10,7 +10,7 @@
 * Assignment -- Text Mining & Interactive Map
     * Interactive Map: Montreal Airbnb Listings
     Demonstrate `leadlet` practice to plot the house listing on the interative map 
-        * [HTML](https://graduatecrisis.github.io/CSX-Data-Science/wk4/hw4_interactive map/Readme.html)
+        * [HTML](https://graduatecrisis.github.io/CSX-Data-Science/wk4/hw4_interactive%20map/Readme.html)
         * [GitHub Page](https://graduatecrisis.github.io/CSX-Data-Science/wk4/hw4_interactive%20map/)
         * [R code](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk4/hw4_interactive%20map/hw4_mtlbnb_leafmap.R)
     
