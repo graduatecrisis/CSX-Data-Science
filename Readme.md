@@ -1,4 +1,4 @@
-107-1 CSX R ш│Зц?Щч?Схн╕чиЛх?Пшинши?
+107-1 CSX R Data Science Programming
 ----------------------------
 
 ### Introducing Myself
