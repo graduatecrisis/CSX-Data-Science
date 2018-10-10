@@ -1,4 +1,4 @@
-107-1 CSX R Ë≥áÊñôÁßëÂ≠∏Á®ãÂºèË®≠Ë®à
+107-1 CSX R Ë≥áÊ?ôÁ?ëÂ≠∏Á®ãÂ?èË®≠Ë®?
 ----------------------------
 
 ### Introducing Myself
@@ -49,3 +49,19 @@ Hi This is Jill. Currently doing my fifth year in NTU. Major in Business Adminis
     - Find New package on plotting map: OpenStreetMap package
 -   wk3 Note
     - ggplot2 Note
+
+
+------------------------------------------------------------------------
+
+*week\_4*
+
+-   In Class
+    - Learn how to perform text mining and visualization
+    - Practice with tm functions and wordcloud package
+    - Decide on the topic of hw
+-   At Home
+    - Finish [course practice & hw4](https://github.com/graduatecrisis/CSX-Data-Science/tree/master/wk4)
+    - Finish DataCamp: String Manipulation/Text mining - Bag of Words
+-   wk4 Note
+    - tm/qdap Note
+    - leaflet Note
