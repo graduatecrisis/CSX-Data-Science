@@ -1,22 +1,21 @@
-### Week 3
+### Week 4
 
 * Summary
-    + ggplot2 Note
+    + Text Mining Note
     + Resources:
-        + [ggplot2 Official](https://ggplot2.tidyverse.org/index.html)
-        + [R CookBook Graphic](http://www.cookbook-r.com/Graphs/)
-        + [ggplot2 Tutorial](http://r-statistics.co/ggplot2-Tutorial-With-R.html)
-        + [Top 50 ggplot Examples](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
-        + [ggmap Fundamental](https://blog.gtwang.org/r/r-ggmap-package-spatial-data-visualization/)
-        + [ggmap Dkhale](https://github.com/dkahle/ggmap)
-        + [OpenStreetMap -1](https://medium.com/siansiansu/create-openstreetmap-in-r-2e15092c69b9)
-        + [OpenStreetMap -2](https://www.linkedin.com/pulse/plot-over-openstreetmap-ggplot2-abel-tortosa-andreu)
+        + [Leaflet Official](https://rstudio.github.io/leaflet/)
+        + [5 Steps fot Text Mining](http://www.sthda.com/english/wiki/text-mining-and-word-cloud-fundamentals-in-r-5-simple-steps-you-should-know)
+        
 
-
-* Assignment -- Data Visualiztion
-    * Example: Montreal Airbnb Listings
-    Demonstrate `ggplot2` practice using Web crawling file ``"Montreal_Airbnb.csv"`` from last week
-        * [HTML](https://graduatecrisis.github.io/CSX-Data-Science/wk3/hw3_ggplot/airbnb_ggplot.html)
-        * [GitHub Page](https://graduatecrisis.github.io/CSX-Data-Science/wk3/hw3_ggplot/)
-        * [R code](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk3/hw3_ggplot/airbnb_ggplot.R)
+* Assignment -- Text Mining & Interactive Map
+    * Interactive Map: Montreal Airbnb Listings
+    Demonstrate `leadlet` practice to plot the house listing on the interative map 
+        * [HTML](https://graduatecrisis.github.io/CSX-Data-Science/wk4/hw4_interactive map/Readme.html)
+        * [GitHub Page](https://graduatecrisis.github.io/CSX-Data-Science/wk4/hw4_interactive%20map/)
+        * [R code](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk4/hw4_interactive%20map/hw4_mtlbnb_leafmap.R)
     
+    * Text Mining: Google News Title
+    Using Google news search results to develope wordclod for specific companies, and compare the words among the companies.
+      * [HTML](https://graduatecrisis.github.io/CSX-Data-Science/wk4/hw4_wordcloud/hw4_wordcloud_news.html)
+      * [GitHub Page](https://graduatecrisis.github.io/CSX-Data-Science/wk4/hw4_wordcloud/)
+      * [R code](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk4/hw4_wordcloud/news_wordcloud.R)
