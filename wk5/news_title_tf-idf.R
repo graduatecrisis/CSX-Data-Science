@@ -5,9 +5,9 @@ library(stringr)
 library(tidyr)
 
 ## Read in data
-fb = readLines("/Users/wanjunghuang/Desktop/CSX_local/Facebooknews_1017.txt")
-google = readLines("/Users/wanjunghuang/Desktop/CSX_local/Googlenews_1017.txt")
-amazon = readLines("/Users/wanjunghuang/Desktop/CSX_local/Amazonnews_1017.txt")
+fb = readLines("/Users/wanjunghuang/Desktop/CSX_local/wk5/Facebooknews_1017.txt")
+google = readLines("/Users/wanjunghuang/Desktop/CSX_local/wk5/Googlenews_1017.txt")
+amazon = readLines("/Users/wanjunghuang/Desktop/CSX_local/wk5/Amazonnews_1017.txt")
 company = c(rep("Facebook", 100), rep("Amazon", 100), rep("Google", 100))
 news_title = data_frame(company = as.factor(company), title = c(fb,google,amazon))
 
