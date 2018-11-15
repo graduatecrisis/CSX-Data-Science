@@ -1,0 +1,51 @@
+Game,Year,Developer,Publisher,Genre,Theme,Perspective,Series,Franchise,Gametime_main,Gametime_main&extra,Gametime_complete,time.diff,Publisher_index,Sequel,winner
+Dragon Age: Inquisition,2014,Bioware,EA,"adventure,rpg,tactical","action,fantasy,historical",third person,Dragonage,Dragonage,46,87.5,127,41.5,2,3,1
+Bayonetta 2,2014,Platinum Games,Nintendo,h&s,action,third person,Bayonetta,,9.5,13,52,3.5,1,2,0
+Dark Souls II,2014,FromSoftware,Bandai Namco,"adventure,rpg","action,fantasy,historical,openworld,survival",third person,Dark Souls,Souls series,46.5,63.5,117,17,3,2,0
+Hearthstone: Heroes of Warcraft,2014,Blizzard,Blizzard,"puzzle,strategy,tbs",fantasy,"third person, text",Hearthstone,Warcraft,0,0,0,0,2,0,0
+Middle-earth: Shadow of Mordor,2014,Monolith Production,WB Games,"adventure,rpg","action,fantasy,historical,openworld,sciencefiction,stealth",third person,Middle Earth,The Lord of the Rings,15.5,23,31,7.5,2,0,0
+The Witcher 3: Wild Hunt,2015,CD Projekt RED,WB Games,"adventure,rpg","action,fantasy,historical,openworld",third person,The Witcher,The Witcher,49.5,103,171,53.5,2,3,1
+Bloodborne,2015,FromSoftware,Sony,"adventure,rpg","action,fantasy,horror",third person,,,35,45,77.5,10,1,0,0
+Fallout 4 ,2015,Bethesda Game Studio,Bethesda,"rpg,shooter","action,openworld,sandbox,sciencefiction","first person, third person",Fallout,,26,78,152,52,2,4,0
+Metal Gear Solid V: The Phantom Pain,2015,Kojima,Konami,"adventure,shooter,tactical","action,fantasy,historical,openworld,stealth",third person,Metal Gear,,45.5,82.5,164,37,3,5,0
+Super Mario Maker,2015,Nintendo,Nintendo,platform,"action,kids",side view,Super Mario,Mario Bros,4.5,29,164,24.5,1,0,0
+Overwatch,2016,Blizzard,Blizzard,"rpg,shooter,strategy","action,comedy,sciencefiction",first person,,,0,0,0,0,2,0,1
+DOOM,2016,id software,Bethesda,shooter,"action,horror,sciencefiction,survival",first person,DOOM,DOOM,11.5,16,24.5,4.5,2,0,0
+INSIDE,2016,Playdead,Playdead,"adventure,indie,platform,puzzle","action,horror,sciencefiction,survival",side view,,,3.5,4,4.5,0.5,4,0,0
+Titanfall 2,2016,Respawn,EA,"adventure,shooter","action,sciencefiction",first person,,,6,8.5,13.5,2.5,2,2,0
+Uncharted 4: A Thief's End,2016,Naughty Dog,Sony,"adventure,shooter","action,fantasy,historical",third person,Uncharted,,15,17.5,28,2.5,1,4,0
+The Legend of Zelda: Breath of the Wild,2017,Nintendo,Nintendo,"adventure,rpg","action,fantasy,openworld",third person,The Legend of Zelda,The Legend of Zelda,46.5,91,177,44.5,1,5,1
+Horizon Zero Dawn,2017,Guerilla,Sony,"rpg,shooter","action,openworld,sciencefiction",third person,,,22,44,59.5,22,1,0,0
+Persona 5,2017,Atlus,Atlus,"adventure,platform,rpg","action,fantasy,stealth",third person,Persona,Megami Tensei,96,111,167,15,4,5,0
+PlayerUnknown's Battlegrounds ,2017,PUBG,Microsoft,"adventure,indie,shooter","action,openworld,survival","first person, third person",,,0,0,0,0,1,0,0
+Super Mario Odyssey,2017,Nintendo,Nintendo,"adventure,platform","action,fantasy,openworld,sandbox",third person,Super Mario,Mario Bros,12.5,25.5,58.5,13,1,5,0
+Grand Theft Auto IV,2008,Rockstar,Take-two,"adventure,racing,shooter,sport","action,openworld",third person,GTA,,28,41,81.5,13,2,4,1
+Fallout 3,2008,Bethesda Game Studio,Bethesda,"rpg,shooter,sport","action,fantasy,historical,sandbox,sciencefiction","first person, third person",Fallout,,23,57.5,118,34.5,2,3,0
+Gears of War 2,2008,Epic Games,Microsoft,shooter,"action,sciencefiction",third person,Gears of War,,10,13,80.5,3,1,2,0
+LittleBigPlanet,2008,Media Molecule,Sony,platform,"kids,sandbox",side view,LittleBigPlanet,,9,17,44,8,1,0,0
+Metal Gear Solid 4: Guns of the Patriots,2008,Kojima,Konami,"adventure,shooter,tactical","action,fantasy,historical,stealth,survival",third person,Metal Gear,,18.5,21.5,28.5,3,3,4,0
+Uncharted 2: Among Thieves,2009,Naughty Dog,Sony,"adventure,shooter","action,fantasy,historical",third person,Uncharted,,10.5,12.5,22,2,1,2,1
+Assassin's Creed II,2009,Ubisoft,Ubisoft,"adventure,platform","action,fantasy,historical,openworld,sandbox,sciencefiction,stealth",third person,Assasin's Creed,Assasin's Creed,19,27,35,8,2,2,0
+Batman: Arkham Asylum,2009,Rocksteady,WB Games,"adventure,h&s","action,stealth",third person,Batman: Arkham,Batman,12,16.5,25.5,4.5,2,0,0
+Call of Duty: Modern Warfare 2,2009,"n-Space,Infinity Ward",Activision,shooter,"action,stealth,warfare","first person, third person",Call of Duty,Call of Duty,6.5,9.5,29,3,4,4,0
+Left 4 Dead 2,2009,"Valve Corporation,Turtle Rock Studios",Valve Corporation,shooter,"action,horro,survival",first person,Left 4 Dead,,9,23.5,37,14.5,3,2,0
+Red Dead Redemption,2010,Rockstar,Take-two,"adventure,rpg,shooter","action,openworld,sandbox",third person,Red Dead Redemption,Read Dead,18,28,46.5,10,2,0,1
+Call of Duty: Black Ops,2010,"n-Space,Treyarch",Activision,shooter,"action,historical,horror,survival,warfare",first person,Call of Duty,Call of Duty,7,12,14.5,5,4,5,0
+God of War III ,2010,SIE,Sony,h&s,"action,fantasy,historical",third person,God of War,,9.75,11,16.75,1.25,1,3,0
+Halo: Reach ,2010,Bungie,Microsoft,shooter,"action,sciencefiction,warfare","first person, third person",Halo,Halo,9,13,56.5,4,1,3,0
+Mass Effect 2,2010,Bioware,EA,"rpg,shooter,simulator","action,sciencefiction",third person,Mass Effect,,24.5,35.5,50.5,11,2,2,0
+The Elder Scrolls V: Skyrim,2011,Bethesda Game Studio,Bethesda,"adventure,rpg","action,fantasy,openworld,sandbox","first person, third person",,,32,107,223,75,2,5,1
+Batman: Arkham City ,2011,Rocksteady,WB Games,"adventure,fighting,h&s","action,openworld,stealth",third person,Batman: Arkham,Batman,12.5,21.5,46.5,9,2,2,0
+The Legend of Zelda: Skyward Sword ,2011,Nintendo,Nintendo,"adventure,platform,puzzle,rpg","action,historical",third person,The Legend of Zelda,The Legend of Zelda,38,46.5,58.5,8.5,1,5,0
+Portal 2 ,2011,Valve Corporation,Valve Corporation,"adventure,platform,puzzle,shooter","action,comedy,horror,sciencefiction",first person,Portal,,8.5,13.5,19.5,5,3,2,0
+Uncharted 3: Drake's Deception,2011,Naughty Dog,Sony,"adventure,platform,shooter","action,fantasy,historical",third person,Uncharted,,9,10.5,20,1.5,1,3,0
+The Walking Dead: The Game,2012,Telltale Games,Telltale Games,"adventure,p&c","action,drama,horror,survival",third person,The Walking Dead,The Walking Dead,12.5,14,14.25,1.5,3,0,1
+Assassin's Creed III ,2012,Ubisoft,Ubisoft,"adventure,strategy","action,fantasy,historical,openworld,sandbox,sciencefiction,stealth",third person,Assasin's Creed,Assasin's Creed,15.5,31,54.5,15.5,2,3,0
+Dishonored ,2012,Arkane Studios,Bethesda,"adventure,shooter","action,stealth",first person,Dishonored,,12,18,32.5,6,2,0,0
+Journey ,2012,ThatGameCompany,Sony,"adventure,indie,music,platform,rpg",action,side view,,,2,2.5,5,0.5,1,0,0
+Mass Effect 3,2012,Bioware,EA,"adventure,rpg,shooter","action,sciencefiction",third person,Mass Effect,,24,35.5,49.5,11.5,2,3,0
+Grand Theft Auto V,2013,Rockstar,Take-two,"adventure,racing,shooter,sport","action,comedy,openworld,sandbox","first person, third person",GTA,,31,46.5,79,15.5,2,5,1
+BioShock Infinite ,2013,"Irrational Games,Virtual Programmin",2K Games,"adventure,shooter","action,drama,fantasy,historical,horror,sciencefiction",first person,Bioshock,,11.5,15.5,26.5,4,3,3,0
+Super Mario 3D World ,2013,Nintendo,Nintendo,"adventure,platform",action,third person,Super Mario,Mario Bros,10.5,19,37.5,8.5,1,5,0
+The Last of Us ,2013,Naughty Dog,Sony,"adventure,shooter","action,horror,stealth,survival",third person,The last of us,,15.5,17.5,22,2,1,0,0
+Tomb Raider,2013,"Crystal Dynamics,Nixxes Software",Square Enix,"adventure,platform,puzzle,shooter","action,sandbox,survival",third person,Tomb Raider,Tomb Raider,11.5,15.5,20.5,4,2,5,0
