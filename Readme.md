@@ -136,5 +136,5 @@ Hi This is Jill. Currently doing my fifth year in NTU. Major in Business Adminis
 
 -   In Class
     - Midterm Presentation
--   Note
-    - Midterm presentation note
+-   At Home
+    - Finish [Midterm Project](https://github.com/graduatecrisis/CSX-Data-Science/tree/master/wk6%2C7%2C8)
