@@ -80,3 +80,61 @@ Hi This is Jill. Currently doing my fifth year in NTU. Major in Business Adminis
     - Finish Reading: Text Mining with R ch1 & 3
 -   wk5 Note
     - text mining note
+
+------------------------------------------------------------------------
+
+*week\_6*
+
+-   In Class
+    - Learn PCA & K-means
+    - Understand the process for data processing
+    - Decide project topic
+-   At Home
+    - Finish DataCamp: Cluster Analysis
+    - Finish DataCamp: Unsupervised Learning
+-   wk6 Note
+    - cluster analysis note
+    - unsupervised learning note
+
+------------------------------------------------------------------------
+
+*week\_7*
+
+-   In Class
+    - Register Shiny
+    - Understand how shiny works
+    - Review the data resource for midterm project
+-   At Home
+    - Finish Data Camp: Shiny tutorial
+    - Data collection for midterm project
+-   wk5 Note
+    - shiny note
+
+------------------------------------------------------------------------
+
+*week\_8*
+
+-   In Class
+    - Lecture: DSP
+-   At Home
+    - Midterm Project: Game of the Year Analysis
+    - Data collection
+
+------------------------------------------------------------------------
+
+*week\_9*
+
+-   In Class
+    - Lecture: MovieBot Chatbox
+-   At Home
+    - Midterm Project: Game of the Year Analysis
+    - Data cleaning & Identify potential problems
+
+------------------------------------------------------------------------
+
+*week\_10*
+
+-   In Class
+    - Midterm Presentation
+-   Note
+    - Midterm presentation note
