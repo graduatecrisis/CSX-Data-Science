@@ -1,0 +1,373 @@
+---
+title: "CSX Midterm Project"
+author: "graduatecrisis"
+date: "2018年11月22日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Analysis of The Game Award -- GOTY
+
+This project is to anaylze games which are nominated for Game of the Year(GOTY) by The Game Award. We would like to see if there exists a suitable cluster analysis method which we use to conclude the shared traits among winners. In this project we would approach the problem with 3 perspectives:
+
+* **Nature & Attributes of the Game**
+    + Basic information: Studio, Publisher, Themes, Gamingtime...etc.
+* **Professional Critcs' Ratings & Review**
+    + Influential media reviews: Polygon, IGN, GameRatings...etc
+* **Players' Ratings & Review**
+    + Player's feedback on *Metacritics*
+
+**Project Goals:**
+
+* What are the traits for the award-wining games?
+* What makes them different from other nominees?
+
+**Analysis Approach:**
+
+* _Cluster Analysis & Unsupervised Learning(PCA)_
+* _Text Mining_
+* _Data Visualization_
+
+**Analysis Structure:**
+
+1. EDA - Data Overview
+
+2. Cluster Analysis - From Aspect of Games, Critics & Players
+
+3. Cluster Comparison & Conclusion
+
+---
+
+### Data Resource
+
+1. [**IGDB**](https://www.igdb.com/discover)
+    * For information about studio, publisher, game type and themes...etc.
+2. [**Metacritics**](https://www.metacritic.com/game)
+    * For critics' ratings/reviews and players' ratings/reviews
+3. [**HowLongToBeat**](https://howlongtobeat.com)
+    * For Gaming time information
+
+---
+
+### Data Structure
+Data set link
+The process of tf-idf will not be explained
+
+---
+
+### EDA
+
+In this section we would constuct the following charts to provide an overview of our data.
+
+```{r message=FALSE}
+# required package
+library(dplyr)
+library(ggplot)
+library(dendextend)
+library(wordcloud2)
+```
+
+```{r include=FALSE}
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+
+  numPlots = length(plots)
+
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                    ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+
+ if (numPlots==1) {
+    print(plots[[1]])
+
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+```
+
+
+```{r}
+# read in data - Game Traits
+goty.data = read.csv("goty_data.csv", stringsAsFactors = FALSE)
+goty.data$Year = as.factor(goty.data$Year)
+goty.data$winner = as.factor(goty.data$winner)
+goty.data$Publisher_index = as.factor(goty.data$Publisher_index)
+goty.data$Sequel = as.factor(goty.data$Sequel)
+# read in data - Critic/Player Ratings
+goty.score = read.csv("goty_score.csv")
+# read in data - Critics' Review
+critic = read.csv("critic_dtm.csv", stringsAsFactors = F)
+row.names(critic) = critic$X
+critic = critic[ ,-1]
+# read in data - Players - Review
+player = read.csv("player_dtm.csv", stringsAsFactors = F)
+row.names(player) = player$X
+player = player[ ,-1]
+```
+
+
+#### Publisher Comparison
+
+```{r}
+# publisher plot
+publisher = ggplot(goty.data, aes(Publisher, fill = Publisher)) + 
+  geom_bar() +
+  guides(fill = FALSE) +
+  xlab("") +
+  ylab("nominated times") +
+  scale_y_continuous(breaks = c(1:12)) +
+  coord_flip() +
+  ggtitle("Nominated Publishers", subtitle = "2008 - 2017") +
+  theme(title = element_text(face = "bold", size = 12))
+
+print(publisher)
+```  
+
+In this chart we can see for publisher who is also hardware developer has more nominated games than others. For example: Sony, Nintendo and Microsoft. Also we can see Bethesda rand 3rd in the chart, which is the best for content-only publishers.
+
+#### Gamingtime Comparison
+
+```{r}
+# game time plot
+normal.time = ggplot(goty.data, aes(x = Year, y = Gametime_main.extra, color = winner)) +
+  geom_point() +
+  scale_color_discrete() +
+  theme_bw() +
+  ggtitle("Gametime Comparison: Main+Extra Content") +
+  ylab("Gametime for Main+Extra Content (hr)") +
+  xlab("") 
+
+extra.time = ggplot(goty.data, aes(x = Year, y = time.diff, color = winner)) +
+  geom_point() +
+  scale_color_discrete() +
+  theme_bw() +
+  ggtitle("Gametime Comparison: Extra Content") +
+  ylab("Gametime for Extra Content (hr)") +
+  xlab("") 
+
+multiplot(normal.time, extra.time, cols = 2)
+```
+
+In these two charts we can see winners(blue dots) tend to have more gaming time than their competitors in the same year. Another interesting point is that winners tend to have more extra content than others.
+
+#### Gamingtime vs. Critics' Review Numbers/Ratings
+
+```{r include=FALSE}
+gametime.plot = data_frame(Year = goty.data$Year, GamingTime = goty.data$Gametime_main.extra, crino = goty.score$Critic_score, playno = goty.score$Player_score, Winner = goty.data$winner)
+
+```
+
+```{r}
+gametime.critic = ggplot(gametime.plot, aes(x = crino, y = GamingTime, color = Year, shape = Winner)) +
+  goem_point() +
+  theme_bw() +
+  xlab("Critic's Avg. Score") +
+  ylab("Total Gaming Time (hr)") +
+  ggtitle("Gaming Time vs. Critics' Rating")
+
+gametime.player = gglpot(gametime.plot, aes(x = playno, y = GamingTime, color = Year, shape = Winner)) +
+  geom_point() +
+  theme_bw()  +
+  xlab("Players' Avg. Score") +
+  ylab("Total Gaming Time (hr)") +
+  ggtitle("Gaming Time vs. Players'' Rating")
+
+multiplot(gametime.critic, gametime.player, cols = 2)
+```
+
+We can easily discover that games with long gaming time tem to have high ratings both from critics and players. However, even if most of the nominees have ratings above 85 (for critics) or 8 (for players), players'  rating vary from below 5 to 10. Also, the distribution is more average for critics' ratings among games with similar gaming time.
+
+#### Critic's vs. Players'
+
+**WordCloud for Critics' Reviews**
+
+```{r}
+critic.cloud = colSums(critic != 0)
+critic.cloud = data_frame(Word = names(critic.cloud), count = critic.cloud)
+critic.pass = critic.cloud[critic.cloud$count > 10, ]
+wordcloud2(critic.pass[1:600, ])
+```
+
+**Wordcloud for Players' Reviews**
+
+```{r}
+player.cloud = colSums(player != 0)
+player.cloud = data_frame(Word = names(player.cloud), count = player.cloud)
+player.pass = player.cloud[player.cloud$count > 10, ]
+wordcloud2(player.pass[1:600, ])
+```
+
+> Here we choose words that have non-zero tfidf for more than 10 games
+
+We can understand by the two graphs that critic's perspective may not meet players' perception.
+---
+
+### Cluster Analysis
+Here we try 2 approaches to do the analysis: `hierarchical` & `kmeans` clustering. 
+* For the quantitative data, we scaled them first before we create distance matrix. 
+* For the text mining data, we first perform PCA to reduce the dimension. 
+
+The details will be specify in the following sections.
+
+```{r}
+# data pre-processing: quantitive data
+game.cluster = as.matrix(goty.data[ ,10:15])
+game.cluster = matrix(as.numeric(unlist(game.cluster)), nrow = nrow(game.cluster))
+game.cluster = scale(game.cluster)
+row.names(game.cluster) = goty.data$Game
+
+critic.cluster = as.matrix(goty.score[ ,3:7])
+critic.cluster = scale(critic.cluster)
+row.names(critic.cluster) = goty.score$Game
+
+player.cluster = as.matrix(goty.score[ ,8:12])
+player.cluster = scale(player.critic)
+row.names(player.cluster) = goty.score$Game
+```
+
+> The date should be scale first for creating distant matrix
+
+#### PCA Selection - Qualitative Data
+```{r}
+# pca for critics review
+crireview.cluster = as.matrix(critic[ ,2:10298])
+crireview.pca = prcomp(crireview.cluster)
+summary(crireview.pca) # pca = 34 -> 85%
+
+# player cluster
+plreview.cluster = as.matrix(player[ ,2:25262])
+plreview.pca = prcomp(plreview.cluster)
+summary(plreview.pca) # pca 34 -> 85%
+
+```
+
+> Here we choose 34 PCA for both critics and players to retain at least 85% of variation
+
+#### Approach 1: K-means
+First we check with elbow plots to decide on the k-value:
+
+```{r}
+# a: game kmeans
+wss = c()
+for(i in 1:10) {
+  kout = kmeans(game.cluster, centers = i, nstart = 20)
+  wss[i] = kout$tot.withinss
+}
+
+# b: critic kmeans
+wss1 = c()
+for(i in 1:10) {
+  kout = kmeans(critic.cluster, centers = i, nstart = 20)
+  wss1[i] = kout$tot.withinss
+}
+
+# c: player kmeans
+wss2 = c()
+for(i in 1:10) {
+  kout = kmeans(player.cluster, centers = i, nstart = 20)
+  wss2[i] = kout$tot.withinss
+}
+
+# d: critic review kmeans
+wss3 = c()
+for(i in 1:20) {
+  kout = kmeans(crireview.pca$x[ ,1:34], centers = i, nstart = 20)
+  wss3[i] = kout$tot.withinss
+}
+
+# e: player review kmeans
+wss4 = c()
+for(i in 1:20) {
+  kout = kmeans(plreview.pca$x[ ,1:34], centers = i, nstart = 20)
+  wss4[i] = kout$tot.withinss
+}
+
+# plot
+par(mfrow = c(3,2))
+
+plot(1:10, wss, xlab = "", ylab = "", main = "(a) k Detection for game", type = "b")
+plot(1:10, wss1, xlab = "", ylab = "", main = "(b) k Detection for critic", type = "b")
+plot(1:10, wss2, xlab = "", ylab = "", main = "(c) k Detection for player", type = "b")
+plot(1:20, wss3, ylab = "", xlab = "", type = "b", main = "(d) k Detection for critic reviews", type = "b")
+plot(1:20, wss4, ylab = "", xlab = "", type = "b", main = "(e) k Detection for player reviews", type = "b")
+```
+
+Here we choose k = 4 for quantitative data. As for quantitative data(text based), we cannot see suitable k for us to choose from. Therefore, we would not perform kmeans for these two dataset.
+
+```{r, include=FALSE}
+dev.off()
+```
+
+**Cluster by Nature & Attrubutes of the Game**
+
+```{r}
+game.kmean = kmeans(game.cluster, centers = 4, nstart = 20)
+game.final = data.frame(game = goty.data$Game, x = game.cluster[ ,1], y = game.cluster[ ,5], cluster = game.kmean$cluster, winner = goty.data$winner)
+
+game.cluster.plot = ggplot(game.final, aes(x = x, y = y, shape = cluster)) +
+  geom_point(aes(color = winner), size = 3) +
+  ggtitle("Cluster for GOTY - By Game Traits", subtitle = "k = 4") +
+  theme(title = element_text(size = 14, face = "bold"))
+
+print(sub.cluster.plot)
+```
+
+
+**Cluster by Critics' Ratings**
+
+```{r}
+# ratings
+critic.kmean = kmeans(critic.cluster, centers = 4, nstart = 20)
+su.final = data.frame(game = goty.data$Game, x = critic.cluster[ ,1], y = critic.cluster[ ,5], cluster = critic.kmean$cluster, winner = goty.data$winner)
+
+critic.cluster.plot = ggplot(critic.final, aes(x = x, y = y, shape = cluster)) +
+  geom_point(aes(color = winner), size = 3) +
+  ggtitle("Cluster for GOTY - By Crtiic's Ratings", subtitle = "k = 4, pca = 2") +
+  theme(title = element_text(size = 14, face = "bold"))
+
+print(critic.cluster.plot)
+```
+
+write down some description
+
+**Cluster by Players' Ratings**
+write down some description
+
+#### Approach 2: Hierarchical
+We use `euclidean` combined with `complete` method to calculate the distance. Then we plot dendrograms to visualize the results.
+
+**Cluster by Nature & Attrubutes of the Game**
+write down some description
+
+**Cluster by Critics' Ratings/Reviews**
+write down some description
+
+**Cluster by Players' Ratings/Reviews**
+write down some description
+
+---
+### Cluster Comparison & Conclusion
+print table
