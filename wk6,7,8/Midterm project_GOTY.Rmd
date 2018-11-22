@@ -65,7 +65,7 @@ In this section we would constuct the following charts to provide an overview of
 ```{r message=FALSE}
 # required package
 library(dplyr)
-library(ggplot)
+library(ggplot2)
 library(dendextend)
 library(wordcloud2)
 ```
@@ -168,7 +168,8 @@ extra.time = ggplot(goty.data, aes(x = Year, y = time.diff, color = winner)) +
   ylab("Gametime for Extra Content (hr)") +
   xlab("") 
 
-multiplot(normal.time, extra.time, cols = 2)
+print(normal.time)
+print(extra.time)
 ```
 
 In these two charts we can see winners(blue dots) tend to have more gaming time than their competitors in the same year. Another interesting point is that winners tend to have more extra content than others.
@@ -182,13 +183,13 @@ gametime.plot = data_frame(Year = goty.data$Year, GamingTime = goty.data$Gametim
 
 ```{r}
 gametime.critic = ggplot(gametime.plot, aes(x = crino, y = GamingTime, color = Year, shape = Winner)) +
-  goem_point() +
+  geom_point() +
   theme_bw() +
   xlab("Critic's Avg. Score") +
   ylab("Total Gaming Time (hr)") +
   ggtitle("Gaming Time vs. Critics' Rating")
 
-gametime.player = gglpot(gametime.plot, aes(x = playno, y = GamingTime, color = Year, shape = Winner)) +
+gametime.player = ggplot(gametime.plot, aes(x = playno, y = GamingTime, color = Year, shape = Winner)) +
   geom_point() +
   theme_bw()  +
   xlab("Players' Avg. Score") +
@@ -201,6 +202,7 @@ multiplot(gametime.critic, gametime.player, cols = 2)
 We can easily discover that games with long gaming time tem to have high ratings both from critics and players. However, even if most of the nominees have ratings above 85 (for critics) or 8 (for players), players'  rating vary from below 5 to 10. Also, the distribution is more average for critics' ratings among games with similar gaming time.
 
 #### Critic's vs. Players'
+We can understand by the two graphs that critic's perspective may not meet players' perception.
 
 **WordCloud for Critics' Reviews**
 
@@ -222,7 +224,6 @@ wordcloud2(player.pass[1:600, ])
 
 > Here we choose words that have non-zero tfidf for more than 10 games
 
-We can understand by the two graphs that critic's perspective may not meet players' perception.
 ---
 
 ### Cluster Analysis
@@ -244,7 +245,7 @@ critic.cluster = scale(critic.cluster)
 row.names(critic.cluster) = goty.score$Game
 
 player.cluster = as.matrix(goty.score[ ,8:12])
-player.cluster = scale(player.critic)
+player.cluster = scale(player.cluster)
 row.names(player.cluster) = goty.score$Game
 ```
 
@@ -311,8 +312,8 @@ par(mfrow = c(3,2))
 plot(1:10, wss, xlab = "", ylab = "", main = "(a) k Detection for game", type = "b")
 plot(1:10, wss1, xlab = "", ylab = "", main = "(b) k Detection for critic", type = "b")
 plot(1:10, wss2, xlab = "", ylab = "", main = "(c) k Detection for player", type = "b")
-plot(1:20, wss3, ylab = "", xlab = "", type = "b", main = "(d) k Detection for critic reviews", type = "b")
-plot(1:20, wss4, ylab = "", xlab = "", type = "b", main = "(e) k Detection for player reviews", type = "b")
+plot(1:20, wss3, ylab = "", xlab = "", main = "(d) k Detection for critic reviews", type = "b")
+plot(1:20, wss4, ylab = "", xlab = "", main = "(e) k Detection for player reviews", type = "b")
 ```
 
 Here we choose k = 4 for quantitative data. As for quantitative data(text based), we cannot see suitable k for us to choose from. Therefore, we would not perform kmeans for these two dataset.
@@ -323,51 +324,131 @@ dev.off()
 
 **Cluster by Nature & Attrubutes of the Game**
 
-```{r}
+```{r }
 game.kmean = kmeans(game.cluster, centers = 4, nstart = 20)
-game.final = data.frame(game = goty.data$Game, x = game.cluster[ ,1], y = game.cluster[ ,5], cluster = game.kmean$cluster, winner = goty.data$winner)
+game.final = data.frame(game = goty.data$Game, x = goty.data$time.diff, y = goty.data$Gametime_main.extra, cluster = game.kmean$cluster, winner = goty.data$winner)
+game.final$cluster = as.factor(game.final$cluster)
 
 game.cluster.plot = ggplot(game.final, aes(x = x, y = y, shape = cluster)) +
-  geom_point(aes(color = winner), size = 3) +
+  geom_point(aes(color = winner), size = 2) +
   ggtitle("Cluster for GOTY - By Game Traits", subtitle = "k = 4") +
-  theme(title = element_text(size = 14, face = "bold"))
+  xlab("Gaming time for extra content") +
+  ylab("Total gaming time") +
+  theme(title = element_text(size = 12, face = "bold"))
 
-print(sub.cluster.plot)
+print(game.cluster.plot)
 ```
-
 
 **Cluster by Critics' Ratings**
 
 ```{r}
 # ratings
 critic.kmean = kmeans(critic.cluster, centers = 4, nstart = 20)
-su.final = data.frame(game = goty.data$Game, x = critic.cluster[ ,1], y = critic.cluster[ ,5], cluster = critic.kmean$cluster, winner = goty.data$winner)
+critic.final = data.frame(game = goty.data$Game, x = goty.score$Critic_score, y = goty.score$Critic_total, cluster = critic.kmean$cluster, winner = goty.data$winner)
+critic.final$cluster = as.factor(critic.final$cluster)
 
 critic.cluster.plot = ggplot(critic.final, aes(x = x, y = y, shape = cluster)) +
-  geom_point(aes(color = winner), size = 3) +
-  ggtitle("Cluster for GOTY - By Crtiic's Ratings", subtitle = "k = 4, pca = 2") +
-  theme(title = element_text(size = 14, face = "bold"))
+  geom_point(aes(color = winner), size = 2) +
+  ggtitle("Cluster for GOTY - By Crtiic's Ratings", subtitle = "k = 4") +
+  xlab("Avg. Critics' Rating") +
+  ylab("Critics' Rating Qty") +
+  theme(title = element_text(size = 12, face = "bold"))
 
 print(critic.cluster.plot)
 ```
 
-write down some description
-
 **Cluster by Players' Ratings**
-write down some description
+
+```{r}
+player.kmean = kmeans(player.cluster, centers = 4, nstart = 20)
+player.final = data.frame(game = goty.data$Game, x = goty.score$Player_score, y = goty.score$Player_total, cluster = player.kmean$cluster, winner = goty.data$winner)
+player.final$cluster = as.factor(player.final$cluster)
+
+player.cluster.plot = ggplot(player.final, aes(x = x, y = y, shape = cluster)) +
+  geom_point(aes(color = winner), size = 2) +
+  ggtitle("Cluster for GOTY - By Crtiic's Ratings", subtitle = "k = 4") +
+  xlab("Avg. Players' Rating") +
+  ylab("Players' Rating Qty") +
+  theme(title = element_text(size = 12, face = "bold"))
+
+print(player.cluster.plot)
+```
 
 #### Approach 2: Hierarchical
 We use `euclidean` combined with `complete` method to calculate the distance. Then we plot dendrograms to visualize the results.
 
+```{r include=FALSE}
+winners = c("Dragon Age: Inquisition", "The Legend of Zelda: Breath of the Wild", 
+           "The Witcher 3: Wild Hunt", "The Elder Scrolls V: Skyrim", "Red Dead Redemption", 
+           "Grand Theft Auto IV", "Grand Theft Auto V", "Overwatch", "The Walking Dead: The Game","Uncharted 2: Among Thieves")
+```
+
 **Cluster by Nature & Attrubutes of the Game**
-write down some description
+
+```{r fig.height=10, fig.width=10}
+game.hclust.pr = hclust(dist(game.cluster))
+game.hcd = as.dendrogram(game.hclust.pr)
+game.hcd = branches_attr_by_labels(game.hcd, winners, color = "red")
+par(mar=c(0.1,1,0.1,18))
+plot(game.hcd,axes= FALSE, horiz = TRUE) 
+```
+
+```{r include=FALSE}
+dev.off()
+```
 
 **Cluster by Critics' Ratings/Reviews**
-write down some description
+
+```{r fig.width=10, fig.height=10}
+critic.hclust.pr = hclust(dist(critic.cluster))
+critic.hcd = as.dendrogram(critic.hclust.pr)
+critic.hcd = branches_attr_by_labels(critic.hcd, winners, color = "red")
+par(mar=c(0.8,1,0.8,18))
+plot(critic.hcd,axes= FALSE, horiz = TRUE)  
+```
+
+```{r include=FALSE}
+dev.off()
+```
+
+```{r fig.height=10, fig.width=10, warning=FALSE}
+crireview.hclust.pr = hclust(dist(crireview.pca$x[1:50 ,1:34]))
+crireview.hcd = as.dendrogram(crireview.hclust.pr)
+crireview.hcd = branches_attr_by_labels(crireview.hcd, winners, color = "red")
+par(mar=c(0.8,1,0.8,18))
+plot(critic.hcd,axes= FALSE, horiz = TRUE)  
+```
+
+```{r include=FALSE}
+dev.off()
+```
 
 **Cluster by Players' Ratings/Reviews**
-write down some description
+
+```{r, fig.width=10, fig.height=10}
+player.hclust.pr = hclust(dist(player.cluster))
+player.hcd = as.dendrogram(player.hclust.pr)
+player.hcd = branches_attr_by_labels(player.hcd, winners, color = "red")
+par(mar=c(0.8,1,0.8,18))
+plot(critic.hcd,axes= FALSE, horiz = TRUE)  
+```
+
+```{r include=FALSE}
+dev.off()
+```
+
+```{r fig.height=10, fig.width=10, warning=FALSE}
+plreview.hclust.pr = hclust(dist(plreview.pca$x[ ,1:34]))
+plreview.hcd = as.dendrogram(plreview.hclust.pr)
+plreview.hcd = branches_attr_by_labels(plreview.hcd, winners, color = "red")
+par(mar=c(0.8,1,0.8,18))
+plot(critic.hcd,axes= FALSE, horiz = TRUE)  
+```
+
+```{r include=FALSE}
+dev.off()
+```
 
 ---
 ### Cluster Comparison & Conclusion
-print table
+
