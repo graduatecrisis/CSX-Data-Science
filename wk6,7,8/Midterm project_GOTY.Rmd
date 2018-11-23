@@ -339,6 +339,8 @@ game.cluster.plot = ggplot(game.final, aes(x = x, y = y, shape = cluster)) +
 print(game.cluster.plot)
 ```
 
+We can see cluster 3 tend to include more winners, which we have large gaming time and extra content for this cluster.
+
 **Cluster by Critics' Ratings**
 
 ```{r}
@@ -357,6 +359,8 @@ critic.cluster.plot = ggplot(critic.final, aes(x = x, y = y, shape = cluster)) +
 print(critic.cluster.plot)
 ```
 
+Here we can see cluster 2 & 4 include almost all the winners. For cluster 2, we have large number of critic reviews with high average rating. On the other hand, in the lowerleft corner we have winners with small number of critics reviews and ratings that is lower than others.
+
 **Cluster by Players' Ratings**
 
 ```{r}
@@ -366,13 +370,15 @@ player.final$cluster = as.factor(player.final$cluster)
 
 player.cluster.plot = ggplot(player.final, aes(x = x, y = y, shape = cluster)) +
   geom_point(aes(color = winner), size = 2) +
-  ggtitle("Cluster for GOTY - By Crtiic's Ratings", subtitle = "k = 4") +
+  ggtitle("Cluster for GOTY - By Player's Ratings", subtitle = "k = 4") +
   xlab("Avg. Players' Rating") +
   ylab("Players' Rating Qty") +
   theme(title = element_text(size = 12, face = "bold"))
 
 print(player.cluster.plot)
 ```
+
+We can see goty are not always considered the "best" for players.
 
 #### Approach 2: Hierarchical
 We use `euclidean` combined with `complete` method to calculate the distance. Then we plot dendrograms to visualize the results.
@@ -381,6 +387,12 @@ We use `euclidean` combined with `complete` method to calculate the distance. Th
 winners = c("Dragon Age: Inquisition", "The Legend of Zelda: Breath of the Wild", 
            "The Witcher 3: Wild Hunt", "The Elder Scrolls V: Skyrim", "Red Dead Redemption", 
            "Grand Theft Auto IV", "Grand Theft Auto V", "Overwatch", "The Walking Dead: The Game","Uncharted 2: Among Thieves")
+
+winners1 = c("Dragon Age", "Zelda: Breathe of the Wild", "Witcher 3", "The Elder Scrolls V", "Red Dead Redemption", 
+           "GTA 4", "GTA 5", "Overwatch", "The Walking Dead: The Game","Uncharted 2")
+
+winners2 = c("Dragon Age: Inquisition", "Zelda: Breathe of the Wild", "Witcher 3", "The Elder Scrolls V", "Red Dead Redemption", 
+           "GTA 4", "GTA 5", "Overwatch", "Walking Dead: The Game","Uncharted 2")
 ```
 
 **Cluster by Nature & Attrubutes of the Game**
@@ -388,10 +400,13 @@ winners = c("Dragon Age: Inquisition", "The Legend of Zelda: Breath of the Wild"
 ```{r fig.height=10, fig.width=10}
 game.hclust.pr = hclust(dist(game.cluster))
 game.hcd = as.dendrogram(game.hclust.pr)
-game.hcd = branches_attr_by_labels(game.hcd, winners, color = "red")
+game.hcd = game.hcd %>% branches_attr_by_labels(winners, color = "red")
 par(mar=c(0.1,1,0.1,18))
 plot(game.hcd,axes= FALSE, horiz = TRUE) 
+game.hcd %>% rect.dendrogram(k = 4, horiz = TRUE, border = 8, lty = 5, lwd = 2)
 ```
+
+We can cut this dendrogram into 4 cluster. The uppermost are the ones come from big publisher and also have long gaming time. In other words, the games in this cluster are considered the "Big Project" for their publisher in that yaer. The cluster in the very end are games which come from third-tier publishers with shorter gaming time and less extra content.
 
 ```{r include=FALSE}
 dev.off()
@@ -404,24 +419,30 @@ critic.hclust.pr = hclust(dist(critic.cluster))
 critic.hcd = as.dendrogram(critic.hclust.pr)
 critic.hcd = branches_attr_by_labels(critic.hcd, winners, color = "red")
 par(mar=c(0.8,1,0.8,18))
-plot(critic.hcd,axes= FALSE, horiz = TRUE)  
+plot(critic.hcd,axes= FALSE, horiz = TRUE)
+critic.hcd %>% rect.dendrogram(k = 4, horiz = TRUE, border = 8, lty = 5, lwd = 2)
 ```
 
 ```{r include=FALSE}
 dev.off()
 ```
 
-```{r fig.height=10, fig.width=10, warning=FALSE}
+If we cut the dendrogram into four clusters, games in the lowest end like GTA 4, The Elder Scroll V...etc. recieved high ratings and also reviewd by lots of critics. The 2 clusters in the middle are games which have more mixed rating, indicating that these games recieved more conflicted reviews. The topmost cluster are games which have higher percentage of positive feedback among all ratings.
+
+```{r fig.height=10, fig.width=10}
 crireview.hclust.pr = hclust(dist(crireview.pca$x[1:50 ,1:34]))
 crireview.hcd = as.dendrogram(crireview.hclust.pr)
-crireview.hcd = branches_attr_by_labels(crireview.hcd, winners, color = "red")
+crireview.hcd = branches_attr_by_labels(crireview.hcd, winners2, color = "red")
 par(mar=c(0.8,1,0.8,18))
-plot(critic.hcd,axes= FALSE, horiz = TRUE)  
+plot(crireview.hcd,axes= FALSE, horiz = TRUE)
+crireview.hcd %>% rect.dendrogram(k = 3, horiz = TRUE, border = 8, lty = 5, lwd = 2)
 ```
 
 ```{r include=FALSE}
 dev.off()
 ```
+
+This cluster basically make games from the same series or publishers in near position. Therefore, we may indicate that critics tend to use similar words to describe sequel games. Also, we can see the used-term difference between traditional video games(high cost, single player, scripted) and online games like Hearthstone, PUBG... 
 
 **Cluster by Players' Ratings/Reviews**
 
@@ -430,20 +451,27 @@ player.hclust.pr = hclust(dist(player.cluster))
 player.hcd = as.dendrogram(player.hclust.pr)
 player.hcd = branches_attr_by_labels(player.hcd, winners, color = "red")
 par(mar=c(0.8,1,0.8,18))
-plot(critic.hcd,axes= FALSE, horiz = TRUE)  
+plot(player.hcd,axes= FALSE, horiz = TRUE)
+player.hcd %>% rect.dendrogram(k = 6, horiz = TRUE, border = 8, lty = 5, lwd = 2)
 ```
 
 ```{r include=FALSE}
 dev.off()
 ```
 
-```{r fig.height=10, fig.width=10, warning=FALSE}
+The games in the lowest bound are which not only recieved extensive players' attention but also highly acclaimed among players. The games on top cluster are the ones with lower players' rating and also higher percentage of negative reviews. As a result we can see most of the winners are included in the cluster which has higher player ratings.
+
+```{r fig.height=10, fig.width=10}
 plreview.hclust.pr = hclust(dist(plreview.pca$x[ ,1:34]))
 plreview.hcd = as.dendrogram(plreview.hclust.pr)
-plreview.hcd = branches_attr_by_labels(plreview.hcd, winners, color = "red")
+plreview.hcd = branches_attr_by_labels(plreview.hcd, winners1, color = "red")
 par(mar=c(0.8,1,0.8,18))
-plot(critic.hcd,axes= FALSE, horiz = TRUE)  
+plot(plreview.hcd,axes= FALSE, horiz = TRUE)
+plreview.hcd %>% rect.dendrogram(k = 3, horiz = TRUE, border = 8, lty = 5, lwd = 2)
 ```
+
+
+From the perspective of players review, we can see games with similar genre(ex: shooting) tned to be in the nearby position.
 
 ```{r include=FALSE}
 dev.off()
@@ -451,4 +479,20 @@ dev.off()
 
 ---
 ### Cluster Comparison & Conclusion
+
+```{r}
+game.compare = cutree(game.hclust.pr, k = 4)
+critic.compare = cutree(critic.hclust.pr, k = 4)
+player.compare = cutree(player.hclust.pr, k = 4)
+crireview.compare = cutree(crireview.hclust.pr, k = 3)
+plreview.compare = cutree(plreview.hclust.pr, k = 3)
+
+table(game.compare, critic.compare)
+table(game.compare, player.compare)
+table(critic.compare, player.compare)
+
+table(game.compare, crireview.compare)
+table(game.compare, plreview.compare)
+table(crireview.compare, plreview.compare)
+```
 
