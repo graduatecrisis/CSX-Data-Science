@@ -1,36 +1,16 @@
-### Week 6,7,8
+### Week 11
 
-#### Analysis of The Game Award -- GOTY
- 
-This project is to anaylze games which are nominated for Game of the Year(GOTY) by The Game Award. We would like to see if there exists a suitable cluster analysis method which we use to conclude the shared traits among winners. In this project we would approach the problem with 3 perspectives:
+#### NLTK & NER with Python
 
-* **Nature & Attributes of the Game**
-    + Basic information: Studio, Publisher, Themes, Gamingtime...etc.
-* **Professional Critcs' Ratings & Review**
-    + Influential media reviews: Polygon, IGN, GameRatings...etc
-* **Players' Ratings & Review**
-    + Player's feedback on *Metacritics*
+* Related Articles
+ - [神經網絡成功逆襲！AI 發展 80 年的派系鬥爭發展史](https://buzzorange.com/techorange/2018/11/23/2-theory-of-ai/?fbclid=IwAR0Ufk72abB3IpSoO1MJNuHOwrG0eWkXtNy-dQkZE9teMiVA2Fb3QvOg-Do)
+ - [人工智能的全面科普](https://hk.saowen.com/a/32acfadf8e45888aaab6213f602f8fe81d819d812253eacd30e6de18469d14ac)
+ - [Logical vs.Analogical or Symbolic vs. Connectionist or Neat vs. Scruffy](http://web.media.mit.edu/~minsky/papers/SymbolicVs.Connectionist.html)
+ - [HanLP](https://github.com/hankcs/HanLP)
 
-**Project Goals:**
+* NLTK video tutorial - Sentdex
+ - [Youtube playlist](https://www.youtube.com/playlist?list=PLQVvvaa0QuDf2JswnfiGkliBInZnIC4HL)
 
-* What are the traits for the award-wining games?
-* What makes them different from other nominees?
-
-**Analysis Approach:**
-
-* _Cluster Analysis & Unsupervised Learning(PCA)_
-* _Text Mining_
-* _Data Visualization_
-
-**Analysis Structure:**
-
-1. EDA - Data Overview
-
-2. Cluster Analysis - From Aspect of Games, Critics & Players
-
-3. Cluster Comparison & Conclusion
-
-#### Demonstration
-* [Shiny]
-* [HTML](https://graduatecrisis.github.io/CSX-Data-Science/wk6,7,8/Midterm_project_GOTY.html)
-* [RMarkdown](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk6%2C7%2C8/Midterm%20project_GOTY.Rmd)
+#### Assignment - NER Example
+* [HTML](https://graduatecrisis.github.io/CSX-Data-Science/wk11/wk11.html)
+* [Code](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk11/class_demo.ipynb)
