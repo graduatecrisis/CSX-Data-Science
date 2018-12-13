@@ -143,7 +143,7 @@ Hi This is Jill. Currently doing my fifth year in NTU. Major in Business Adminis
 
 *Final*
 
--   [Pitch] (https://docs.google.com/presentation/d/1qJVBV4lT7LTste3Xm8rtAYJJyUosV_dsLccIlWd8QcU/edit?usp=sharing)
+-   [Pitch](https://docs.google.com/presentation/d/1qJVBV4lT7LTste3Xm8rtAYJJyUosV_dsLccIlWd8QcU/edit?usp=sharing)
 
 
 
