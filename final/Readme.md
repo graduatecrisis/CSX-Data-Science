@@ -1,8 +1,8 @@
-### Week 6,7,8
+### Final Project
 
-#### Analysis of The Game Award -- GOTY
+#### Title
  
-This project is to anaylze games which are nominated for Game of the Year(GOTY) by The Game Award. We would like to see if there exists a suitable cluster analysis method which we use to conclude the shared traits among winners. In this project we would approach the problem with 3 perspectives:
+Description
 
 * **Nature & Attributes of the Game**
     + Basic information: Studio, Publisher, Themes, Gamingtime...etc.
