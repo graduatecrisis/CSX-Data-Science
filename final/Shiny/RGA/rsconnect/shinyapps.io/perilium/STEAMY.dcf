@@ -1,0 +1,12 @@
+name: STEAMY
+title: STEAMY
+username:
+account: perilium
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 623643
+bundleId: 1784809
+url: https://perilium.shinyapps.io/STEAMY/
+when: 1545880448.03136
+asMultiple: FALSE
+asStatic: FALSE
