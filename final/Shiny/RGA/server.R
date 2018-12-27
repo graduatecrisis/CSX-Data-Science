@@ -10,7 +10,7 @@ formal = head(ran,20)
 shinyServer(function(input, output) {
   
   
-  output$intro <- renderText("This analysis is based on the ranking of 20 games that have the highest ranking of all PC games on Bahamut Forum.")
+  output$intro <- renderText("Data including steam games published in 2012-2014,and statistics based on SteamSpy and Metacritic.")
 
   output$trialName <- renderPrint(str(ran[ran$Game== input$Namae,]))
   
@@ -62,6 +62,6 @@ shinyServer(function(input, output) {
                   }
                   
                   recommend.list = data_frame(Name = dummy.1$Game, Similarity = cosine.value)
-                  print(head(arrange(recommend.list, desc(Similarity)), 20))
+                  head(arrange(recommend.list, desc(Similarity)), 20)
   })
   })
