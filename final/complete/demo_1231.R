@@ -107,5 +107,5 @@ for(i in 1:2497) {
   cosine.value = c(cosine.value, cosine.cal)
 }
 
-recommend.list = data_frame(Game = dummy.1$Game, ID = dummy.1$Appid, Publisher = display$Publisher, PlayerOption = display$PlayerOption, VisualOption = display$VisualOption, TraitOption = display$TraitOption, Similarity = cosine.value)
+recommend.list = data_frame(Game = dummy.1$Game, ID = dummy.1$Appid, Publisher = display$Publisher, Score = display$Index ,PlayerOption = display$PlayerOption, VisualOption = display$VisualOption, TraitOption = display$TraitOption, Similarity = cosine.value)
 print(arrange(recommend.list,desc(Similarity), VisualOption))
