@@ -1,36 +1,7 @@
-### Final Project
+### 107-1 資料科學程式設計 Final Project
 
-#### Title
+#### 主題：自定義標籤權重推薦模式-以STEAM PC Game為例
  
-Description
-
-* **Nature & Attributes of the Game**
-    + Basic information: Studio, Publisher, Themes, Gamingtime...etc.
-* **Professional Critcs' Ratings & Review**
-    + Influential media reviews: Polygon, IGN, GameRatings...etc
-* **Players' Ratings & Review**
-    + Player's feedback on *Metacritics*
-
-**Project Goals:**
-
-* What are the traits for the award-wining games?
-* What makes them different from other nominees?
-
-**Analysis Approach:**
-
-* _Cluster Analysis & Unsupervised Learning(PCA)_
-* _Text Mining_
-* _Data Visualization_
-
-**Analysis Structure:**
-
-1. EDA - Data Overview
-
-2. Cluster Analysis - From Aspect of Games, Critics & Players
-
-3. Cluster Comparison & Conclusion
-
-#### Demonstration
-* [Shiny]
-* [HTML](https://graduatecrisis.github.io/CSX-Data-Science/wk6,7,8/Midterm_project_GOTY.html)
-* [RMarkdown](https://github.com/graduatecrisis/CSX-Data-Science/blob/master/wk6%2C7%2C8/Midterm%20project_GOTY.Rmd)
+* [Demo Video]()
+* [PPT](https://docs.google.com/presentation/d/19A7dbZ1TPZIauqt5swQ9d7CH7udu5f928Wqwz3w0NOo/edit?usp=sharing)
+* [Code](https://github.com/graduatecrisis/CSX-Data-Science/tree/master/final/complete)
