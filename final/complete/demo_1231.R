@@ -17,7 +17,7 @@ for(i in 1:326) {
 
 # Page 1: display the basic data
 print("This function displays basic information for the game")
-row.names(display) = display$Appid
+row.names(display) = display$Game
 display.list = setNames(split(display, seq(nrow(display))), rownames(display))
 ent = readline(prompt = "Please enter ID number:")
 target.list = display.list[[ent]]
