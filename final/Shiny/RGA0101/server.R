@@ -34,27 +34,27 @@ shinyServer(function(input, output, session) {
   
   eventReactive(input$update,{
     if(input$criteria1 == "price") {
-      dummy.1$PriceRange = dummy.1$PriceRange * 4
+      dummy.1$PriceRange = dummy.1$PriceRange * 3.8
     } else if(input$criteria1 == "playtime") {
-      dummy.1$PlayTimeRange = dummy.1$PlayTimeRange *4
+      dummy.1$PlayTimeRange = dummy.1$PlayTimeRange *3.8
     } else if(input$criteria1 == "score") {
-      dummy.1$Index = dummy.1$Index *4
+      dummy.1$Index = dummy.1$Index *3.8
     }
     ## First category - Criteria2
     if(input$criteria2 == "price") {
-      dummy.1$PriceRange = dummy.1$PriceRange * 3
+      dummy.1$PriceRange = dummy.1$PriceRange * 3.5
     } else if(input$criteria2 == "playtime") {
-      dummy.1$PlayTimeRange = dummy.1$PlayTimeRange *3
+      dummy.1$PlayTimeRange = dummy.1$PlayTimeRange *3.5
     } else if(input$criteria2 == "score") {
-      dummy.1$Index = dummy.1$Index *3
+      dummy.1$Index = dummy.1$Index *3.5
     }
     ## First category - Criteria3
     if(input$criteria3 == "price") {
-      dummy.1$PriceRange = dummy.1$PriceRange * 2
+      dummy.1$PriceRange = dummy.1$PriceRange * 3
     } else if(input$criteria3 == "playtime") {
-      dummy.1$PlayTimeRange = dummy.1$PlayTimeRange *2
+      dummy.1$PlayTimeRange = dummy.1$PlayTimeRange *3
     } else if(input$criteria3 == "score") {
-      dummy.1$Index = dummy.1$Index *2
+      dummy.1$Index = dummy.1$Index *3
     }
     
     ## Second category
@@ -63,20 +63,20 @@ shinyServer(function(input, output, session) {
     
     ### retrieve index
     sub.tagprob = tag.relation.1 %>% subset(Tag1 == input$inSelect1 | Tag1 == input$inSelect2 | Tag1 == input$inSelect3)
-    sub.tagprob[sub.tagprob$Tag1 == input$inSelect1, 3] = sub.tagprob[sub.tagprob$Tag1 == input$inSelect1, 3] * 4
-    sub.tagprob[sub.tagprob$Tag1 == input$inSelect2, 3] = sub.tagprob[sub.tagprob$Tag1 == input$inSelect1, 3] * 3
-    sub.tagprob[sub.tagprob$Tag1 == input$inSelect3, 3] = sub.tagprob[sub.tagprob$Tag1 == input$inSelect1, 3] * 2
+    sub.tagprob[sub.tagprob$Tag1 == input$inSelect1, 3] = sub.tagprob[sub.tagprob$Tag1 == input$inSelect1, 3] * 3.8
+    sub.tagprob[sub.tagprob$Tag1 == input$inSelect2, 3] = sub.tagprob[sub.tagprob$Tag1 == input$inSelect1, 3] * 3.5
+    sub.tagprob[sub.tagprob$Tag1 == input$inSelect3, 3] = sub.tagprob[sub.tagprob$Tag1 == input$inSelect1, 3] * 3
     
     sub.tagprob = sub.tagprob %>% group_by(Tag2) %>% summarise(Accuprob = sum(value))
     
     ### assign weight
     for(i in 9:326) {
       if(colnames(dummy.1)[i] == input$inSelect1) {
-        dummy.1[ ,i] = dummy.1[ ,i] * 4
+        dummy.1[ ,i] = dummy.1[ ,i] * 3.8
       } else if(colnames(dummy.1)[i] == input$inSelect2) {
-        dummy.1[ ,i] = dummy.1[ ,i] * 3
+        dummy.1[ ,i] = dummy.1[ ,i] * 3.5
       } else if(colnames(dummy.1)[i] == input$inSelect3) {
-        dummy.1[ ,i] = dummy.1[ ,i] * 2
+        dummy.1[ ,i] = dummy.1[ ,i] * 3
       } else if(colnames(dummy.1)[i] %in% sub.tagprob$Tag2) {
         multiply = sub.tagprob[sub.tagprob$Tag2 == colnames(dummy.1)[i], ]$Accuprob
         dummy.1[ ,i] = dummy.1[ ,i] * multiply
@@ -89,13 +89,13 @@ shinyServer(function(input, output, session) {
                 # Can also set the label and select items
                 target.list = display.list[[input$Namae]]
                 updateSelectInput(session, "inSelect",
-                                  label = paste("Select input label"),
+                                  label = paste("Select first label"),
                                   choices = unlist(strsplit(target.list$MainTags, ",")))
                 updateSelectInput(session, "inSelect2",
-                                  label = paste("Select input label"),
+                                  label = paste("Select second label"),
                                   choices = unlist(strsplit(target.list$MainTags, ",")))
                 updateSelectInput(session, "inSelect3",
-                                  label = paste("Select input label"),
+                                  label = paste("Select third label"),
                                   choices = unlist(strsplit(target.list$MainTags, ",")))
                 })
               
