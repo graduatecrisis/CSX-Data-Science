@@ -4,14 +4,14 @@ library(stringr)
 
 # Read in data
 display = read.csv("./final/complete/display_data_12-14.csv", stringsAsFactors = F)
-dummy = read.csv("./final/complete/dummy_data_v2.csv", stringsAsFactors = F)
+dummy = read.csv("./final/complete/dummy_data_v3.csv", stringsAsFactors = F)
 tag.relation = read.csv("./final/complete/tag_calculation.csv", stringsAsFactors = F)
 ## copy dummy dataset for calculation
-dummy.1 = dummy[-451, ]
+dummy.1 = dummy
 tag.relation.1 = tag.relation
 
 ## restructure column names
-for(i in 1:326) {
+for(i in 1:351) {
   names(dummy.1)[i] = str_replace_all(names(dummy.1[i]), "\\.", " ")
 }
 
